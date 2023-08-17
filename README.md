@@ -1,5 +1,29 @@
-# Joplin Plugin
+# Joplin Plugin Wavedrom
+This plugin allows you to create Wavedrom diagrams as defined by https://wavedrom.com/.
 
-This is your new Joplin plugin. It is suggested that you use this README file to document your plugin.
 
-For information on how to build or publish the plugin, please see [GENERATOR_DOC.md](./GENERATOR_DOC.md)
+## Installation
+
+### Automatic Installation
+Search for "typograms" in the Joplin plugin manager.
+
+### Manual Installation
+1. Download the latest release from GitHub
+2. Open `Joplin > Options > Plugins > Install from File`
+3. Select the jpl file downloaded from GitHub
+
+## Markdown Syntax
+Example syntax:
+
+    ```wavedrom
+    {signal: [
+      {name: "clk",  wave: "p......"},
+      {name: "bus",  wave: "x.34.5x",   data: "head body tail"},
+      {name: "wire", wave: "0.1..0."},
+    ]}
+    ```
+
+Produces:
+
+![Example](./doc/example.png)
+
