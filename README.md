@@ -5,7 +5,7 @@ This plugin allows you to create Wavedrom diagrams as defined by https://wavedro
 ## Installation
 
 ### Automatic Installation
-Search for "typograms" in the Joplin plugin manager.
+Search for "wavedrom" in the Joplin plugin manager.
 
 ### Manual Installation
 1. Download the latest release from GitHub
