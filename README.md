@@ -27,3 +27,10 @@ Produces:
 
 ![Example](./doc/example.png)
 
+## Building
+The plugin may be built with:
+```
+npm run dist
+```
+This will generated a jpl file in the publish directory.
+

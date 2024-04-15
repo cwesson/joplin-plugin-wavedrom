@@ -12,15 +12,34 @@ export default function(context) {
 				const token = tokens[idx];
 				if (token.info !== 'wavedrom') return defaultRender(tokens, idx, options, env, self);
 
+				// Rich text editor support:
+				// The joplin-editable and joplin-source CSS classes mark the generated div
+				// as a region that needs special processing when converting back to markdown.
+				// This element helps Joplin reconstruct the original markdown.
+				const richTextEditorMetadata = `
+					<pre
+						class="joplin-source"
+						data-joplin-language="wavedrom"
+						data-joplin-source-open="\`\`\`wavedrom\n"
+						data-joplin-source-close="\`\`\`"
+					>${markdownIt.utils.escapeHtml(token.content)}</pre>
+				`;
+
 				try {
 					const source = eval('(' + token.content + ')');
 					const diagram = document.createElement('div');
-					diagram.className = 'wavedrom-container';
+					diagram.className = 'wavedrom-diagram';
 					wavedrom.renderWaveElement(idx, source, diagram, wavedrom.waveSkin, false);
-					return diagram.outerHTML;
+					return `
+						<div class="wavedrom-container joplin-editable">
+							${richTextEditorMetadata}
+							${diagram.outerHTML}
+						</div>
+					`;
 				} catch(e) {
 					return `
-						<div class="wavedrom-container">
+						<div class="wavedrom-container joplin-editable">
+							${richTextEditorMetadata}
 							<b>Wavedrom Error:</b><br/>
 							${e.message}
 						</div>
