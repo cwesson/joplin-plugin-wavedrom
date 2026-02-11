@@ -1,5 +1,5 @@
-# Joplin Plugin Wavedrom
-This plugin allows you to create Wavedrom diagrams as defined by https://wavedrom.com/.
+# Joplin Plugin WaveDrom
+This plugin allows you to create WaveDrom diagrams as defined by https://wavedrom.com/.
 
 
 ## Installation
