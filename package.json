@@ -28,6 +28,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "safe-eval": "^0.4.1",
     "wavedrom": "^3.3.0"
   }
 }

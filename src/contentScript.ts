@@ -1,5 +1,6 @@
 import * as MarkdownIt from "markdown-it";
 import wavedrom = require("wavedrom");
+var safeEval = require('safe-eval');
 
 export default function(context) {
 	return {
@@ -26,7 +27,7 @@ export default function(context) {
 				`;
 
 				try {
-					const source = eval('(' + token.content + ')');
+					const source = safeEval(token.content);
 					const diagram = document.createElement('div');
 					diagram.className = 'wavedrom-diagram';
 					wavedrom.renderWaveElement(idx, source, diagram, wavedrom.waveSkin, false);
@@ -40,7 +41,7 @@ export default function(context) {
 					return `
 						<div class="wavedrom-container joplin-editable">
 							${richTextEditorMetadata}
-							<b>Wavedrom Error:</b><br/>
+							<b>WaveDrom Error:</b><br/>
 							${e.message}
 						</div>
 					`;
